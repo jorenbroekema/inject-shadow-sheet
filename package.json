@@ -1,0 +1,26 @@
+{
+  "name": "lion-tailwind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "wds --node-resolve --open --watch",
+    "tailwind": "tailwindcss-cli build -o tailwind.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@web/dev-server": "^0.1.17",
+    "playwright-chromium": "^1.11.1",
+    "postcss": "^8.3.0",
+    "postcss-discard-comments": "^5.0.1",
+    "prettier": "^2.3.0",
+    "tailwindcss-cli": "^0.1.2"
+  },
+  "dependencies": {
+    "@lion/button": "^0.12.0",
+    "@lion/core": "^0.17.0"
+  }
+}
