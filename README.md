@@ -47,8 +47,8 @@ Cons:
 - Spins up web server + playwright crawler to read out these getters (NodeJS cannot import as ESM since non-ESM imports are used, @lion/core + @lion/button are not "type":"module"....)
 - Based on the configs from these getters, read the global stylesheets and extract only the rules of which the selectors are used, using PostCSS
 - Use JS AST to inline these CSS contents into the css literals that have `@inject` atrules.
-- Write the new files to destination output directory (e.g. /src/ --> /lion-dist/)
-- Run other build-steps on /lion-dist/
+- Write the new files to destination output directory (e.g. /src/ --> /pre-dist/)
+- Run other build-steps on /pre-dist/ --> /dist/
 
 Later: make it watchable so it reruns transforms on files that match the glob and have changed.
 
