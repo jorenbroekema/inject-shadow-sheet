@@ -10,7 +10,7 @@ The point here is to try to avoid forking CSS files from these frameworks which 
 
 ## @import
 
-Using CSS `@import` in `<style>` tags in lit render() --> [foo-button](./foo-button.js) 
+Using CSS `@import` in `<style>` tags in lit render() --> [foo-button](./foo-button.js)
 
 Pros:
 
@@ -52,4 +52,4 @@ Cons:
 
 Later: make it watchable so it reruns transforms on files that match the glob and have changed.
 
-See also the before / after code snippets in [snippets](./snippets)
+See also the before / after code snippets in [snippets](./snippets.md)

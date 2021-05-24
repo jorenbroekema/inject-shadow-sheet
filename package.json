@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "wds --node-resolve --open --watch",
-    "tailwind": "tailwindcss-cli build -o tailwind.css"
+    "tailwind": "tailwindcss-cli build -o tailwind.css",
+    "format": "prettier \"**/*.{js,md,html,css,json}\" --write",
+    "lint": "prettier \"**/*.{js,md,html,css,json}\" --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +24,11 @@
   "dependencies": {
     "@lion/button": "^0.12.0",
     "@lion/core": "^0.17.0"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "trailingComma": "all"
   }
 }

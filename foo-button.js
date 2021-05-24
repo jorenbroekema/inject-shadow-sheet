@@ -1,5 +1,5 @@
-import { css, html } from "@lion/core";
-import { LionButton } from "@lion/button";
+import { css, html } from '@lion/core';
+import { LionButton } from '@lion/button';
 
 class FooButton extends LionButton {
   static get styles() {
@@ -21,7 +21,7 @@ class FooButton extends LionButton {
   render() {
     return html`
       <style>
-        @import "tailwind.css";
+        @import 'tailwind.css';
       </style>
       ${this._beforeTemplate()}
       <div class="button-content p-10" id="${this._buttonId}">
@@ -32,4 +32,4 @@ class FooButton extends LionButton {
     `;
   }
 }
-customElements.define("foo-button", FooButton);
+customElements.define('foo-button', FooButton);
