@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "wds --node-resolve --open --watch",
+    "start": "node ./src/run.js",
+    "demo": "wds --node-resolve --open --watch",
     "tailwind": "tailwindcss-cli build -o tailwind.css",
     "format": "prettier \"**/*.{js,md,html,css,json}\" --write",
     "lint": "prettier \"**/*.{js,md,html,css,json}\" --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)"
@@ -14,6 +15,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/types": "^7.14.2",
     "@web/dev-server": "^0.1.17",
     "playwright-chromium": "^1.11.1",
     "postcss": "^8.3.0",

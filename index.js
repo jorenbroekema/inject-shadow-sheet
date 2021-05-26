@@ -1,6 +1,6 @@
 import { html, render } from '@lion/core';
-import './foo-button';
-import './qux-button';
+import './fixtures/foo-button.js';
+import './fixtures/qux-button.js';
 
 render(
   html`

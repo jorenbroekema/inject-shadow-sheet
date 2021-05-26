@@ -5,7 +5,7 @@ export class QuxButton extends LionButton {
   static get usedFromGlobalStylesheets() {
     return {
       'tailwind.css': {
-        used: ['p-10'],
+        used: ['pl-56'],
         selectors: {
           ':host([active])': ['border-green-500'],
         },
@@ -50,7 +50,7 @@ export class adewaButton extends LionButton {
   static get usedFromGlobalStylesheets() {
     return {
       'tailwind.css': {
-        used: ['p-10'],
+        used: ['p-9'],
         selectors: {
           ':host([active])': ['border-green-500'],
         },
@@ -64,7 +64,7 @@ export class saddsad extends LionButton {
   static get ussedFromGlobalStylesheets() {
     return {
       'tailwind.css': {
-        used: ['p-10'],
+        used: ['p-8'],
         selectors: {
           ':host([active])': ['border-green-500'],
         },
