@@ -43,7 +43,7 @@ Cons:
 ### How it works
 
 - Pass a glob of files to transform
-- Finds exported classes with usedFromGlobalStylesheets static getter
+- Finds exported classes with classesFromStylesheets static getter
 - Spins up web server + playwright crawler to read out these getters (NodeJS cannot import as ESM since non-ESM imports are used, @lion/core + @lion/button are not "type":"module"....)
 - Based on the configs from these getters, read the global stylesheets and extract only the rules of which the selectors are used, using PostCSS
 - Use JS AST to inline these CSS contents into the css literals that have `@inject` atrules.

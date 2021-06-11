@@ -15,18 +15,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/types": "^7.14.2",
-    "@web/dev-server": "^0.1.17",
-    "playwright-chromium": "^1.11.1",
-    "postcss": "^8.3.0",
-    "postcss-discard-comments": "^5.0.1",
     "prettier": "^2.3.0",
     "tailwindcss-cli": "^0.1.2"
   },
   "dependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/types": "^7.14.2",
     "@lion/button": "^0.12.0",
-    "@lion/core": "^0.17.0"
+    "@lion/core": "^0.17.0",
+    "@web/dev-server": "^0.1.17",
+    "lodash": "^4.17.21",
+    "playwright-chromium": "^1.11.1",
+    "postcss": "^8.3.0",
+    "postcss-discard-comments": "^5.0.1",
+    "postcss-selector-parser": "^6.0.6"
   },
   "prettier": {
     "printWidth": 100,

@@ -4,11 +4,11 @@
 
 ```js
 export class BarButton extends LionButton {
-  static get usedFromGlobalStylesheets() {
+  static get classesFromStylesheets() {
     return {
       'tailwind.css': {
         used: ['mx-3', 'mx-4', 'color-red'],
-        selectors: [
+        mapped: [
           ':host([active])': ['border-green-500']
         ],
       }

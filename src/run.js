@@ -30,16 +30,16 @@ async function stop() {
   await server.stop();
 }
 
-async function getUsedFromGlobalStylesheets(filePaths, page) {
+async function getclassesFromStylesheets(filePaths, page) {
   return await Promise.all(
     filePaths.map((filePath) => {
       return page.evaluate(async (filePath) => {
         const exps = await import(filePath);
         const obj = { filePath };
         Object.keys(exps)
-          .filter((key) => typeof exps[key].usedFromGlobalStylesheets === 'object')
+          .filter((key) => typeof exps[key].classesFromStylesheets === 'object')
           .forEach((key) => {
-            obj[key] = exps[key].usedFromGlobalStylesheets;
+            obj[key] = exps[key].classesFromStylesheets;
           });
         return obj;
       }, filePath);
@@ -47,20 +47,28 @@ async function getUsedFromGlobalStylesheets(filePaths, page) {
   );
 }
 
-async function injectCSSInFiles(cfg) {
+async function injectCSSInFiles(cfg, outputDir) {
   for (const cfgValue of cfg.values()) {
     const { filePath } = cfgValue;
     delete cfgValue.filePath;
     const code = await fs.readFile(path.resolve(filePath), 'utf8');
-    const newCode = transformCode(code, cfgValue);
-    console.log(prettier.format(newCode, { parser: 'babel' }));
-    // TODO: Next, output it as file inside outputDir,
-    // keeping folder structure of inputPath intact
+    const newCode = prettier.format(transformCode(code, cfgValue), { parser: 'babel' });
+    const outputPath = path.resolve(path.join(outputDir, filePath));
+    const outputPathDir = path.dirname(outputPath);
+    try {
+      const outputDirAccess = await fs.access(outputPathDir);
+      if (!outputDirAccess) {
+        throw new Error();
+      }
+    } catch (e) {
+      await fs.mkdir(outputPathDir, { recursive: true });
+    }
+    await fs.writeFile(outputPath, newCode, 'utf8');
   }
 }
 
 /**
- * 1) Go through files that contain "usedFromGlobalStylesheets" static getters
+ * 1) Go through files that contain "classesFromStylesheets" static getters
  * 2) Fetch CSS from the stylesheets based on the configs
  * 3) Insert this CSS as string in the configs object and return
  */
@@ -85,13 +93,13 @@ async function main() {
   await start();
 
   // Analyze inputPaths for classes with methods static get usedFromGlobalStylesheet and store in memory
-  let globalStylesheetConfigs = await getUsedFromGlobalStylesheets(inputPaths, page);
+  let globalStylesheetConfigs = await getclassesFromStylesheets(inputPaths, page);
 
   // Fetch CSS from the configured stylesheets and store in memory
   globalStylesheetConfigs = await injectCSSInConfigs(globalStylesheetConfigs);
 
   // Inject CSS in the classes, clean up and spit out as new files in outputDir, keeping folder structure intact
-  await injectCSSInFiles(globalStylesheetConfigs);
+  await injectCSSInFiles(globalStylesheetConfigs, outputDir);
 
   await stop();
 }

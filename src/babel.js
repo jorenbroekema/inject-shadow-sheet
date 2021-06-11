@@ -22,8 +22,9 @@ export function injectCSSPlugin({ types: t }) {
 
           /**
            * TODO: Instead of Regex matching and replacing, try with PostCSS, might be easier?
+           *
            * 1) for each match on the raw value
-           * 2) Check whether the matched stylesheet maps to a key in the usedFromGlobalStylesheets config
+           * 2) Check whether the matched stylesheet maps to a key in the classesFromStylesheets config
            * 3) If so, fetch the CSS we're supposed to inject from the config
            * 4) Replace the `@inject` statement with the CSS by replacing the quasi with a new one with the CSS as raw value
            */
@@ -80,7 +81,7 @@ export function removeGetterPlugin({ types: t }) {
       if (
         path.node.static &&
         path.node.kind === 'get' &&
-        path.node.key.name === 'usedFromGlobalStylesheets'
+        path.node.key.name === 'classesFromStylesheets'
       ) {
         path.remove();
       }

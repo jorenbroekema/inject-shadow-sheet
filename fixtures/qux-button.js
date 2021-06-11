@@ -2,11 +2,11 @@ import { css, html } from '@lion/core';
 import { LionButton } from '@lion/button';
 
 export class QuxButton extends LionButton {
-  static get usedFromGlobalStylesheets() {
+  static get classesFromStylesheets() {
     return {
       'tailwind.css': {
-        used: ['pl-56'],
-        selectors: {
+        used: ['p-10', 'border-green-500', 'm-5', 'xl:container'],
+        mapped: {
           ':host([active])': ['border-green-500'],
         },
       },
@@ -35,7 +35,7 @@ export class QuxButton extends LionButton {
   render() {
     return html`
       ${this._beforeTemplate()}
-      <div class="button-content p-10" id="${this._buttonId}">
+      <div class="button-content p-10 border-green-500 m5" id="${this._buttonId}">
         <slot></slot>
       </div>
       ${this._afterTemplate()}
@@ -45,13 +45,13 @@ export class QuxButton extends LionButton {
 }
 customElements.define('qux-button', QuxButton);
 
-// Should not be limited to only 1 export with this getter
+// Should not be limited to only 1 export with this getter, though without a styles getter + @inject, nothing will be injected
 export class adewaButton extends LionButton {
-  static get usedFromGlobalStylesheets() {
+  static get classesFromStylesheets() {
     return {
       'tailwind.css': {
         used: ['p-9'],
-        selectors: {
+        mapped: {
           ':host([active])': ['border-green-500'],
         },
       },
@@ -65,7 +65,7 @@ export class saddsad extends LionButton {
     return {
       'tailwind.css': {
         used: ['p-8'],
-        selectors: {
+        mapped: {
           ':host([active])': ['border-green-500'],
         },
       },
