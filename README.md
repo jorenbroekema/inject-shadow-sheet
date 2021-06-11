@@ -8,6 +8,13 @@ I try to generalize for other CSS frameworks that leverage global stylesheets as
 
 The point here is to try to avoid forking CSS files from these frameworks which is a lot of work on the maintainer and styles easily go out of sync.
 
+Build tailwind.css:
+
+```sh
+npm i
+npm run tailwind
+```
+
 ## @import
 
 Using CSS `@import` in `<style>` tags in lit render() --> [foo-button](./foo-button.js)
