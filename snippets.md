@@ -6,7 +6,7 @@
 export class BarButton extends LionButton {
   static get classesFromStylesheets() {
     return {
-      'tailwind.css': {
+      'tailwind.css': { // <-- path ref must match
         used: ['mx-3', 'mx-4', 'color-red'],
         mapped: [
           ':host([active])': ['border-green-500']
@@ -18,6 +18,7 @@ export class BarButton extends LionButton {
   static get styles() {
     return [
       ...super.styles,
+      //                v-- path ref must match
       css`
         @inject 'tailwind.css';
       `,
@@ -34,11 +35,11 @@ export class BarButton extends LionButton {
     return [
       ...super.styles,
       css`
-        mx-3 { ... }
+        .mx-3 { ... }
 
-        mx-4 { ... }
+        .mx-4 { ... }
 
-        color-red { ... }
+        .color-red { ... }
 
         :host([active]) {
           border-color: green
