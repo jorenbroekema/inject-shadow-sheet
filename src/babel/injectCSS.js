@@ -1,4 +1,4 @@
-import { transformSync } from '@babel/core';
+import { transformSync, parseSync, transformFromAstSync } from '@babel/core';
 import * as BabelTypes from '@babel/types';
 
 /** @param {{ types: BabelTypes }} opts */
@@ -97,7 +97,7 @@ export function removeGetterPlugin({ types: t }) {
   };
 }
 
-export function transformCode(code, cfg) {
+export function injectCSS(code, cfg) {
   const newCode = transformSync(code, {
     plugins: [[injectCSSPlugin, { cfg }], [removeGetterPlugin]],
   })?.code;

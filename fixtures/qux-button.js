@@ -61,7 +61,7 @@ export class adewaButton extends LionButton {
 
 // Should ignore because misspelled getter
 export class saddsad extends LionButton {
-  static get ussedFromGlobalStylesheets() {
+  static get classessFromStylesheets() {
     return {
       'tailwind.css': {
         used: ['p-8'],
